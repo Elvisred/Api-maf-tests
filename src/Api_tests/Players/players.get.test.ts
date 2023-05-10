@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import { Api } from '../../utils/Api';
+import { Api } from '../../utils/api';
 
 describe('GET', () => {
     it('should return list of players with id=1', async () => {

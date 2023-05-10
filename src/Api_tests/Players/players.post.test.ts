@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import { Api } from '../../utils/Api';
+import { Api } from '../../utils/api';
 import { v4 as uuidv4 } from 'uuid';
 
 describe('POST', () => {
