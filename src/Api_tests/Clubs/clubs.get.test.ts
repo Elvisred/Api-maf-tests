@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import { Api } from '../../utils/Api';
+import { Api } from '../../Utils/Api';
 
 describe('GET', () => {
   it('Получение списка клубов', async () => {

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import { Api } from '../../utils/Api'; 
+import { Api } from '../../Utils/Api'; 
 import { v4 as uuidv4 } from 'uuid';
 
 describe('DELETE', () => {
