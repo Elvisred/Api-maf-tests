@@ -13,10 +13,10 @@ describe('POST', () => {
 
         expect(result.status).to.equal(201);
         expect(responseJson.id).to.equal(idClub);
-    });
-});
 
-describe('POST', () => {
+        await Api.deleteClubs(idClub)
+    });
+    
     it('Создание нового клуба с некорректными параметрами', async () => {
         const params: { club_name: string; city: string; error: string }[] = [
             { club_name: '', city: 'Moscow', error: 'Club name is required' },

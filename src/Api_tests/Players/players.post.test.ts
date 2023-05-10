@@ -15,5 +15,7 @@ describe('POST', () => {
 
         expect(postResult.status).to.equal(201);
         expect(postJson.id).to.equal(idPlayer);
+
+        await Api.deleteClubs(idPlayer)
     });
 });

@@ -19,5 +19,7 @@ describe('PUT', () => {
 
     expect(putResult.status).to.equal(200);
     expect(putResult.data.message).to.equal(`Player with ID ${putId} updated successfully`);
+
+    await Api.deleteClubs(putId)
   });
 });
