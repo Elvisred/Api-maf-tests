@@ -1,0 +1,40 @@
+{
+  "name": "api-mafia-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "tsc",
+    "test": "mocha -r ts-node/register src/**/*.test.ts",
+    "test:clubs-post": "mocha --require ts-node/register src/Api_tests/Clubs/Clubs.post.test.ts",
+    "test:clubs-delete": "mocha --require ts-node/register src/Api_tests/Clubs/Clubs.delete.test.ts",
+    "test:clubs-get": "mocha --require ts-node/register src/Api_tests/Clubs/Clubs.get.test.ts",
+    "test:clubs-put": "mocha --require ts-node/register src/Api_tests/Clubs/Clubs.put.test.ts",
+    "test:players-delete": "mocha --require ts-node/register src/Api_tests/Players/Players.delete.test.ts",
+    "test:players-get": "mocha --require ts-node/register src/Api_tests/Players/Players.get.test.ts",
+    "test:players-post": "mocha --require ts-node/register src/Api_tests/Players/Players.post.test.ts",
+    "test:players-put": "mocha --require ts-node/register src/Api_tests/Players/Players.put.test.ts",
+    "type": "module"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "axios": "^1.4.0",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "mysql2": "^3.3.0",
+    "ts-jest": "^29.1.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.4.3"
+  },
+  "mocha": {
+    "timeout": 7000
+  }
+}
