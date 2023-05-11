@@ -2,24 +2,37 @@ import { expect } from 'chai';
 import 'mocha';
 import { Api } from '../../utils/api';
 import { v4 as uuidv4 } from 'uuid';
+import { AxiosResponse } from 'axios';
 
 describe('PUT', () => {
-  it('should update existing player', async () => {
-    const nickname = uuidv4().substring(0, 10);
+    describe('Updating an existing player', () => {
+        let postResult: AxiosResponse<any, any>;
+        let postJson: { id: number; [key: string]: any };
+        let putId: number;
+        let putResult: AxiosResponse<any, any>;
 
-    const postResult = await Api.postNewPlayer(nickname, 'Red Testing Mafia', 'Alina Korolenko');
-    const postJson = postResult.data;
-    const putId = postJson.id;
+        before(async () => {
+            const nickname = uuidv4().substring(0, 10);
+            postResult = await Api.postNewPlayer(nickname, 'Red Testing Mafia', 'Alina Korolenko');
+            postJson = postResult.data;
+            putId = postJson.id;
 
-    const putNickname = uuidv4().substring(0, 10);
-    const putClub = uuidv4().substring(0, 10);
-    const putName = uuidv4().substring(0, 10);
+            const putNickname = uuidv4().substring(0, 10);
+            const putClub = uuidv4().substring(0, 10);
+            const putName = uuidv4().substring(0, 10);
+            putResult = await Api.putPlayers(putId, putNickname, putClub, putName);
+        });
 
-    const putResult = await Api.putPlayers(putId, putNickname, putClub, putName);
+        it('should return status 200', () => {
+            expect(putResult.status).to.equal(200);
+        });
 
-    expect(putResult.status).to.equal(200);
-    expect(putResult.data.message).to.equal(`Player with ID ${putId} updated successfully`);
+        it('should update player with correct message', () => {
+            expect(putResult.data.message).to.equal(`Player with ID ${putId} updated successfully`);
+        });
 
-    await Api.deleteClubs(putId)
-  });
+        after(async () => {
+            await Api.deletePlayers(putId);
+        });
+    });
 });
