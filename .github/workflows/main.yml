@@ -1,4 +1,4 @@
-name: Python application test with Github Actions
+name: Node.js CI
 
 on: [push]
 
@@ -9,15 +9,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
       with:
-        python-version: 3.8
+        node-version: '14' # выберите подходящую версию Node.js для вашего проекта
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        npm ci 
     - name: Run tests
       run: |
-        python -m pytest
-        
+        npm test
